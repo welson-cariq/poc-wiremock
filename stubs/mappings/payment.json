@@ -1,0 +1,27 @@
+{
+    "request": {
+        "urlPath": "/payment/register",
+        "method": "POST"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "bodyFileName": "payment/success.json",
+        "transformers": [
+            "response-template"
+        ]
+    },
+    "postServeActions": [{
+        "name": "webhook",
+        "parameters": {
+            "method": "POST",
+            "url": "http://localhost:9191/payment/register/forward",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": "{ \"id\": \"{{randomValue type='UUID'}}\",\"card\": \"{{jsonPath originalRequest.body '$.card'}}\" }"
+        }
+    }]
+}
