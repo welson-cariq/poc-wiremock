@@ -1,6 +1,13 @@
 # poc-wiremock
 This PoC was developed to test the Forward Carllback feature of the WireMock (http://wiremock.org/).
 
+### The structure
+- poc-webhook: it is the project to simulate a WebHook service.
+- extensions: The dependencies that were used as extensions in docker command
+- stubs: the configuration
+    - mappings: the stub definition
+    - __files: the files that will be used as response
+
 ### Follow the steps below to run the PoC:
 
 1. Build the poc-webhook
