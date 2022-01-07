@@ -6,14 +6,14 @@ This PoC was developed to test the Forward Carllback feature of the WireMock (ht
 1. Build the poc-webhook
 
 
-The poc-webhook is a simple application to simulate an application that needs to receive a request from Mock-Server, it will start at port 9191
+The poc-webhook is a simple application to simulate an application that needs to receive a request from WireMock, it will start at port 9191
 ```bash
 $ ./gradlew build
 
 $ java -jar build/libs/poc-webhook-0.1-all.jar
 ```
 
-2. Run MockServer as docker container
+2. Run WireMock as docker container
 
 ```bash
 $ docker run --rm --network=host -p 8080:8080 -v $PWD/stubs:/home/wiremock -v $PWD/extensions:/var/wiremock/extensions wiremock/wiremock:2.32.0 --extensions com.opentable.extension.BodyTransformer,org.wiremock.weboks.Webhooks --global-response-templating
